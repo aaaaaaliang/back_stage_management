@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑文章类型</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0faff;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .logout {
+            margin-left: auto;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .menu-list li {
+            margin-bottom: 10px;
+        }
+        .table {
+            background-color: #ffffff;
+        }
+        .type-form {
+            display: flex;
+            align-items: center;
+            margin-top: 10px; /* Add margin top for better spacing */
+        }
+        .type-input {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .addtype {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+        .addtype:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .edit {
+            margin-right: 5px; /* Add margin right for better spacing */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="user-info">
+                <p class="mb-0">欢迎你 <em>哆啦A梦</em></p>
+            </div>
+            <ul class="menu-list">
+                <li><a href="#" class="icon031">文章列表</a></li>
+                <li><a href="#" class="icon032">添加文章</a></li>
+                <li><a href="#" class="icon034">添加分类</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+            <div class="header">
+                <a href="#" class="logout float-right">退 出</a>
+            </div>
+            <div class="main_body" id="main_body">
+                <div class="breadcrub">
+                    当前位置：文章管理>添加分类
+                </div>
+                <div class="pannel">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col" width="10%">ID</th>
+                            <th scope="col" width="60%">类别名称</th>
+                            <th scope="col" width="30%">管理操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{range  .types}}
+                        <tr>
+                            <td>{{.Id}}</td>
+                            <td>{{.TypeName}}</td>
+                            <td>
+                                <a href="javascript:;" class="edit text-danger">删除</a>
+                                <a href="javascript:;" class="edit text-success">编辑</a>
+                            </td>
+                        </tr>
+                        {{end}}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                <form class="type-form" method="post" action="/AddArticleType">
+                                    <input type="text" class="form-control type-input" placeholder="添加分类" name="typeName">
+                                    <input type="submit" class="btn btn-primary addtype" value="增加分类">
+                                </form>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 导入 Bootstrap JS 和 jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

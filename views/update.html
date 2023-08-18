@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更新文章内容</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .logout {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .menu-list li {
+            margin-bottom: 10px;
+        }
+        .review-title {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .input-file-preview {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+        .logo {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="user-info">
+                <img src="/static/img/d1.jpeg" alt="张大山">
+                <p>欢迎你 <em>张雪亮</em></p>
+            </div>
+            <ul class="menu-list">
+                <li><a href="#" class="icon031">文章列表</a></li>
+                <li><a href="#" class="icon032">添加文章</a></li>
+                <li><a href="#" class="icon034">添加分类</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+            <div class="header">
+                <a href="#" class="logo"><img src="/static/img/logo.jpeg" alt="logo"></a>
+                <a href="#" class="logout float-right">退出</a>
+            </div>
+            <div class="main_body" id="main_body">
+                <div class="breadcrub">
+                    当前位置：文章管理>编辑文章
+                </div>
+                <div class="pannel">
+                    <form name="logon" method="post" enctype="multipart/form-data" action="/update?id={{.article.Id}}">
+                        <h3 class="review-title">编辑文章</h3>
+                        <div class="form-group">
+                            <label>文章标题：</label>
+                            <input type="text" class="form-control" name="articleName" value="{{.article.Aname}}">
+                        </div>
+                        <div class="form-group">
+                            <label>文章内容：</label>
+                            <textarea class="form-control" name="content">{{.article.Acontent}}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>上传图片：</label>
+                            <img src="{{.article.Aimg}}" class="input-file-preview">
+                            <input type="file" name="uploadname" class="form-control-file">
+                        </div>
+                        <div class="form-group indent-group line-top">
+                            <input type="submit" value="添加" class="btn btn-primary">
+                            <span>{{.errmsg}}</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 导入 Bootstrap JS 和 jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
